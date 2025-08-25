@@ -4,7 +4,7 @@ build:
 install:
 	uv sync
 
-collecstatic:
+collectstatic:
 	uv run python manage.py collecstatic
 
 migrate:
