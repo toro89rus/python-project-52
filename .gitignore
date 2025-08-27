@@ -4,3 +4,5 @@ __pycache__
 .env
 .python-version
 static_files/
+.ruff_cache
+db.sqlite3
