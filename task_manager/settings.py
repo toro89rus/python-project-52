@@ -12,29 +12,23 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
-import dj_database_url
-
-from task_manager.config import DATABASE_URL, SECRET_KEY
+from task_manager.config import Config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+config = Config()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY
+SECRET_KEY = config.secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not config.is_production
 
-ALLOWED_HOSTS = [
-    "webserver",
-    "localhost",
-    "127.0.0.1",
-    "task-manager-2c0i.onrender.com",
-]
+ALLOWED_HOSTS = config.allowed_hosts
 
 
 # Application definition
@@ -85,12 +79,7 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    "default": dj_database_url.config(
-        default=DATABASE_URL,
-        conn_max_age=600,
-    )
-}
+DATABASES = {"default": config.setup_database(BASE_DIR)}
 
 
 # Password validation
