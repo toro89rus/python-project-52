@@ -25,5 +25,5 @@ class Config:
     @property
     def allowed_hosts(self):
         if self.is_production:
-            return ["localhost", "127.0.0.1"]
-        return ["webserver", "task-manager-2c0i.onrender.com"]
+            return ["webserver", "task-manager-2c0i.onrender.com"]
+        return ["localhost", "127.0.0.1"]
