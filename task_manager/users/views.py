@@ -26,7 +26,7 @@ class OwnProfileMixin(UserPassesTestMixin):
 
 
 class IndexView(ListView):
-    model = User
+    queryset = User.objects.all().order_by("id")
     template_name = "users/index.html"
     context_object_name = "users"
 
