@@ -127,16 +127,12 @@ msgid "User has been successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/views.py:50
-#, fuzzy
-#| msgid "User has been successfully registered"
 msgid "User has been successfully updated"
-msgstr "Пользователь успешно зарегистрирован"
+msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:63
-#, fuzzy
-#| msgid "User has been successfully registered"
 msgid "User has been successfully deleted"
-msgstr "Пользователь успешно зарегистрирован"
+msgstr "Пользователь успешно удален"
 
 #: task_manager/views.py:20
 msgid "You are logged in"
