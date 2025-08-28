@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
+
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 {% block content %}
   <h1 class="my-4">{% trans "Users"%}</h1>
 
@@ -18,14 +23,12 @@
       <tr>
         <td>{{ user.id }}</td>
         <td>{{ user.username }}</td>
-        <td>{{ user.first_name }} {{ user.last_name }}</td>
+        <td>{{ user.get_full_name }}</td>
         <td>{{ user.date_joined }}</td>
         <td>
-        <!-- Update href! -->
-          <a href="/users/{{ user.id }}/update/">{% trans "Edit" %}</a>
+          <a href="{% url "users_update" user.id %}">{% trans "Edit" %}</a>
           <br />
-        <!-- Update href! -->
-          <a href="/users/{{ user.id }}/delete/">{% trans "Delete" %}</a>
+          <a href="{% url "users_delete" user.id %}">{% trans "Delete" %}</a>
         </td>
       </tr>
         {% endfor %}
