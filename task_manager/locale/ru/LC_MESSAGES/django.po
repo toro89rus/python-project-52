@@ -30,7 +30,7 @@ msgstr "Менеджер задач"
 
 #: task_manager/templates/login.html:10
 msgid "Login"
-msgstr ""
+msgstr "Вход"
 
 #: task_manager/templates/navbar.html:20
 #: task_manager/templates/users/index.html:4
