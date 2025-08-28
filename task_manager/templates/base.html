@@ -7,12 +7,29 @@
 
 {% load i18n %}
 
-<html lang="{{ LANGUAGE_CODE|default:'en' }}"><head>
-
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
+  <head>
     <title>{% trans "Hexlet task manager" %}</title>
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     {% include "navbar.html" %}
-    {% block content %}
-    {% endblock %}
-</body></html>
+    <div class="container wrapper flex-grow-1">
+      {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% block content %}
+      {% endblock %}
+    </div>
+    <footer>
+      <div class="container my-5 pt-4 border-top">
+        <a target="_blank" href="https://github.com/toro89rus/python-project-52">Github</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -7,14 +7,12 @@
 {% load i18n %}
 
 {% block content %}
-<div class="container wrapper flex-grow-1">
     <h1 class="my-4">{% trans "Registration"%}</h1>
-        <form action="{% url "users_create" %}" method="post">
+        <form method="post">
             {% csrf_token %}
             <table class="mb-3">
                 {% bootstrap_form form %}
             </table>
             <input class="btn btn-primary" type="submit" value="{% trans "Sign up"%}">
         </form>
-    </div>
 {% endblock %}
