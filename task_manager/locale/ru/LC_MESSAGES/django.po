@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 13:38+0000\n"
+"POT-Creation-Date: 2025-08-28 18:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,7 +79,7 @@ msgstr "Вы уверены, что хотите удалить %(full_name)s?"
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: task_manager/templates/users/index.html:15 task_manager/users/forms.py:18
+#: task_manager/templates/users/index.html:15 task_manager/users/forms.py:20
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -101,16 +101,14 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: task_manager/templates/users/update.html:5
-#, fuzzy
-#| msgid "Username"
 msgid "User update"
-msgstr "Имя пользователя"
+msgstr "Изменить пользователя"
 
-#: task_manager/users/forms.py:16
+#: task_manager/users/forms.py:18
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:17
+#: task_manager/users/forms.py:19
 msgid "Last Name"
 msgstr "Фамилия"
 
