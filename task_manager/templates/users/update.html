@@ -1,18 +1,6 @@
-{% extends "base.html" %}
-
-{% load django_bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+{% extends "users/base_form.html" %}
 
 {% load i18n %}
 
-{% block content %}
-    <h1 class="my-4">{% trans "User update"%}</h1>
-        <form method="post">
-            {% csrf_token %}
-            <table class="mb-3">
-                {% bootstrap_form form %}
-            </table>
-            <input class="btn btn-primary" type="submit" value="{% trans "Edit"%}">
-        </form>
-{% endblock %}
+{% block title %}{% trans "User update"%}{% endblock %}
+{% block submit_label %}{% trans "Edit"%}{% endblock %}
