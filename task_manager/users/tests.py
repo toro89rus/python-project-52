@@ -14,7 +14,7 @@ class UsersTest(TestCase):
     testuser_password = "123"
     mismatched_passwords_message = _("The two password fields didn’t match.")
     update_message = _("User has been successfully updated")
-    wrong_user_message = _("You can't edit other user")
+    wrong_user_message = _("You can&#x27;t edit other user")
     delete_confirm_message = "Do you really want to delete %(full_name)s?"
     delete_message = _("User has been successfully deleted")
 

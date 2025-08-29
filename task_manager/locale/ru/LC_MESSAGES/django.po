@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-28 18:42+0000\n"
+"POT-Creation-Date: 2025-08-29 17:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,44 +20,54 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/templates/base.html:12
+#: task_manager/core/views.py:19
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: task_manager/core/views.py:25
+msgid "You've successfully logged out"
+msgstr "Вы разлогинены"
+
+#: task_manager/templates/core/base.html:12
 msgid "Hexlet task manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/index.html:7 task_manager/templates/navbar.html:4
-msgid "Task manager"
-msgstr "Менеджер задач"
-
-#: task_manager/templates/login.html:10
+#: task_manager/templates/core/login.html:10
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/navbar.html:11
+#: task_manager/templates/core/login.html:16
+#: task_manager/templates/core/navbar.html:31
+msgid "Sign in"
+msgstr "Вход"
+
+#: task_manager/templates/core/main.html:7
+#: task_manager/templates/core/navbar.html:4
+msgid "Task manager"
+msgstr "Менеджер задач"
+
+#: task_manager/templates/core/navbar.html:11
 #: task_manager/templates/users/index.html:9
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/navbar.html:15
+#: task_manager/templates/core/navbar.html:15
 msgid "Statuses"
 msgstr "Статусы"
 
-#: task_manager/templates/navbar.html:18
+#: task_manager/templates/core/navbar.html:18
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/templates/navbar.html:21
+#: task_manager/templates/core/navbar.html:21
 msgid "Tasks"
 msgstr "Задачи"
 
-#: task_manager/templates/navbar.html:26
+#: task_manager/templates/core/navbar.html:26
 msgid "Logout"
 msgstr "Выход"
 
-#: task_manager/templates/navbar.html:31
-msgid "Sign in"
-msgstr "Вход"
-
-#: task_manager/templates/navbar.html:34
+#: task_manager/templates/core/navbar.html:34
 #: task_manager/templates/users/create.html:6
 msgid "Sign up"
 msgstr "Регистрация"
@@ -79,7 +89,7 @@ msgstr "Вы уверены, что хотите удалить %(full_name)s?"
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: task_manager/templates/users/index.html:15 task_manager/users/forms.py:20
+#: task_manager/templates/users/index.html:15 task_manager/users/forms.py:18
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -104,13 +114,29 @@ msgstr "Удалить"
 msgid "User update"
 msgstr "Изменить пользователя"
 
-#: task_manager/users/forms.py:18
+#: task_manager/users/forms.py:16
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:19
+#: task_manager/users/forms.py:17
 msgid "Last Name"
 msgstr "Фамилия"
+
+#: task_manager/users/tests.py:15
+msgid "The two password fields didn’t match."
+msgstr ""
+
+#: task_manager/users/tests.py:16 task_manager/users/views.py:50
+msgid "User has been successfully updated"
+msgstr "Пользователь успешно изменен"
+
+#: task_manager/users/tests.py:17
+msgid "You can&#x27;t edit other user"
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: task_manager/users/tests.py:19 task_manager/users/views.py:63
+msgid "User has been successfully deleted"
+msgstr "Пользователь успешно удален"
 
 #: task_manager/users/views.py:15
 msgid "You're not authorised. Please login"
@@ -123,19 +149,3 @@ msgstr "У вас нет прав для изменения другого по�
 #: task_manager/users/views.py:37
 msgid "User has been successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
-
-#: task_manager/users/views.py:50
-msgid "User has been successfully updated"
-msgstr "Пользователь успешно изменен"
-
-#: task_manager/users/views.py:63
-msgid "User has been successfully deleted"
-msgstr "Пользователь успешно удален"
-
-#: task_manager/views.py:20
-msgid "You are logged in"
-msgstr "Вы залогинены"
-
-#: task_manager/views.py:26
-msgid "You've successfully logged out"
-msgstr "Вы разлогинены"

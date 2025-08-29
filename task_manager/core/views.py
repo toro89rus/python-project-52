@@ -9,13 +9,12 @@ from django.views import View
 
 
 class MainView(View):
-
     def get(self, request, *args, **kwargs):
-        return render(request, "index.html")
+        return render(request, "core/main.html")
 
 
 class UserLoginView(SuccessMessageMixin, LoginView):
-    template_name = "login.html"
+    template_name = "core/login.html"
     next_page = reverse_lazy("main")
     success_message = _("You are logged in")
 

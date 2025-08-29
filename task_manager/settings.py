@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "task_manager",
+    "task_manager.core",
     "task_manager.users",
 ]
 
@@ -68,7 +69,7 @@ ROOT_URLCONF = "task_manager.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "task_manager" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -126,4 +127,4 @@ STATIC_ROOT = BASE_DIR / "static_files"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOCALE_PATHS = ["locale"]
+LOCALE_PATHS = [BASE_DIR / "locale"]
