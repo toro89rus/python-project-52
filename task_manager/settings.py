@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 
 from django.contrib.messages import constants as messages
+from django.urls import reverse_lazy
 
 from task_manager.config import Config
 
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     "task_manager",
     "task_manager.core",
     "task_manager.users",
+    "task_manager.statuses",
 ]
 
 MIDDLEWARE = [
@@ -101,6 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
         },
     }
 ]
+
+LOGIN_URL = reverse_lazy("login")
 
 
 # Internationalization

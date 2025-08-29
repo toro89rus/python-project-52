@@ -31,7 +31,6 @@ class UserUpdateView(
     model = User
     form_class = UserForm
     success_message = _("User has been successfully updated")
-    login_url = reverse_lazy("login")
     template_name = "users/update.html"
     success_url = reverse_lazy("users_index")
 
@@ -44,6 +43,5 @@ class UserDeleteView(
 ):
     model = User
     success_message = _("User has been successfully deleted")
-    login_url = reverse_lazy("login")
     template_name = "users/delete.html"
     success_url = reverse_lazy("users_index")
