@@ -5,7 +5,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+
 from task_manager.users.forms import UserForm
 
 
@@ -25,7 +26,7 @@ class OwnProfileMixin(UserPassesTestMixin):
         return redirect(reverse_lazy("users_index"))
 
 
-class IndexView(ListView):
+class UserIndexView(ListView):
     queryset = User.objects.all().order_by("id")
     template_name = "users/index.html"
     context_object_name = "users"
