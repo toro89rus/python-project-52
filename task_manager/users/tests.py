@@ -13,6 +13,7 @@ class UsersTest(TestCase):
     testuser_username = "user2"
     testuser_password = "123"
     mismatched_passwords_message = _("The two password fields didn’t match.")
+    create_message = _("User has been successfully registered")
     update_message = _("User has been successfully updated")
     wrong_user_message = _("You can&#x27;t edit other user")
     delete_confirm_message = "Do you really want to delete %(full_name)s?"
@@ -50,6 +51,7 @@ class UsersTest(TestCase):
             follow=True,
         )
         self.assertRedirects(response, self.login_url)
+        self.assertContains(response, self.create_message)
 
         response = self.client.get(self.index_users_url)
         self.assertContains(response, "John Doe")
