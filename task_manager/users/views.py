@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from task_manager.users.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
