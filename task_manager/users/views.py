@@ -5,15 +5,19 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from task_manager.users.forms import UserForm
-from task_manager.mixins import LoginRequiredWithMessageMixin, OwnProfileMixin
+from task_manager.mixins import OwnProfileMixin
+from django.contrib.auth.decorators import login_not_required
+from django.utils.decorators import method_decorator
 
 
+@method_decorator(login_not_required, name="dispatch")
 class UserIndexView(ListView):
     queryset = User.objects.all().order_by("id")
     template_name = "users/index.html"
     context_object_name = "users"
 
 
+@method_decorator(login_not_required, name="dispatch")
 class UserCreateView(SuccessMessageMixin, CreateView):
     model = User
     form_class = UserForm
@@ -23,7 +27,6 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 
 class UserUpdateView(
-    LoginRequiredWithMessageMixin,
     OwnProfileMixin,
     SuccessMessageMixin,
     UpdateView,
@@ -36,7 +39,6 @@ class UserUpdateView(
 
 
 class UserDeleteView(
-    LoginRequiredWithMessageMixin,
     OwnProfileMixin,
     SuccessMessageMixin,
     DeleteView,

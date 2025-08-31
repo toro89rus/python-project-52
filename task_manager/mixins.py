@@ -1,17 +1,8 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-
-
-class LoginRequiredWithMessageMixin(LoginRequiredMixin):
-
-    def dispatch(self, request, *args, **kwargs):
-        if not self.request.user.is_authenticated:
-            messages.error(request, _("You're not authorised. Please login"))
-            return redirect(reverse_lazy("login"))
-        return super().dispatch(request, *args, **kwargs)
 
 
 class PermissionDeniedMixin(UserPassesTestMixin):

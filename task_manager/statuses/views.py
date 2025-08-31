@@ -3,20 +3,17 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from task_manager.mixins import LoginRequiredWithMessageMixin
 from task_manager.statuses.forms import StatusForm
 from task_manager.statuses.models import Status
 
 
-class StatusIndexView(LoginRequiredWithMessageMixin, ListView):
+class StatusIndexView(ListView):
     queryset = Status.objects.all().order_by("id")
     template_name = "statuses/index.html"
     context_object_name = "statuses"
 
 
-class StatusCreateView(
-    LoginRequiredWithMessageMixin, SuccessMessageMixin, CreateView
-):
+class StatusCreateView(SuccessMessageMixin, CreateView):
     model = Status
     form_class = StatusForm
     success_message = _("Status has been successfully registered")
@@ -25,7 +22,6 @@ class StatusCreateView(
 
 
 class StatusUpdateView(
-    LoginRequiredWithMessageMixin,
     SuccessMessageMixin,
     UpdateView,
 ):
@@ -37,7 +33,6 @@ class StatusUpdateView(
 
 
 class StatusDeleteView(
-    LoginRequiredWithMessageMixin,
     SuccessMessageMixin,
     DeleteView,
 ):
