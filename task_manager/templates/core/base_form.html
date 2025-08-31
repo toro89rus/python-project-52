@@ -8,8 +8,8 @@
 
 {% block content %}
 <h1 class="my-4">{% block title %}{% endblock %}</h1>
-  <form method="post">
-    {% csrf_token %}
+<form method="post">
+  {% csrf_token %}
     {% for field in form %}
     <div class="mb-3">
         {% bootstrap_field field show_help=False show_errors=False %}
@@ -21,6 +21,6 @@
         {% endif %}
       </div>
     {% endfor %}
-    <input class="btn btn-primary" type="submit" value="{% block submit_label %}{% endblock %}">
-  </form>
+  <input class="btn btn-primary" type="submit" value="{% block submit_label %}{% endblock %}" />
+</form>
 {% endblock %}
