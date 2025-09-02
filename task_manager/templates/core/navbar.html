@@ -12,13 +12,13 @@
       </li>
       {% if request.user.is_authenticated %}
       <li class="nav-item">
-        <a class="nav-link" href="/statuses/">{% trans "Statuses" %}</a>
+        <a class="nav-link" href="{% url "statuses_index"%}">{% trans "Statuses" %}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/labels/">{% trans "Labels" %}</a>
+        <a class="nav-link" href="{% url "labels_index"%}">{% trans "Labels" %}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/tasks/">{% trans "Tasks" %}</a>
+        <a class="nav-link" href="{% url "tasks_index"%}">{% trans "Tasks" %}</a>
       </li>
       <li class="nav-item d-flex align-items-center">
         <form action="/logout/" method="post" class="m-0 p-0">

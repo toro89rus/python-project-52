@@ -19,7 +19,7 @@ class TasksTest(TestCase):
     delete_message = _("Task has been successfully deleted")
 
     login_url = reverse("login")
-    index_tasks_url = reverse("tasks_index")
+    tasks_index_url = reverse("tasks_index")
     tasks_create_url = reverse("tasks_create")
     tasks_update_url = reverse("tasks_update", kwargs={"pk": test_task_id})
     tasks_read_url = reverse("tasks_update", kwargs={"pk": test_task_id})
@@ -35,7 +35,7 @@ class TasksTest(TestCase):
         )
 
     def test_tasks_index(self):
-        response = self.client.get(self.index_tasks_url)
+        response = self.client.get(self.tasks_index_url)
         self.assertEqual(response.status_code, 200)
         self.assertIn("tasks", response.context)
         actual_tasks_count = len(response.context["tasks"])
@@ -52,7 +52,7 @@ class TasksTest(TestCase):
             },
             follow=True,
         )
-        self.assertRedirects(response, self.index_tasks_url)
+        self.assertRedirects(response, self.tasks_index_url)
         self.assertContains(response, "New task")
         actual_tasks_count = len(response.context["tasks"])
         self.assertEqual(actual_tasks_count, self.expected_tasks_count + 1)
@@ -68,7 +68,7 @@ class TasksTest(TestCase):
             },
             follow=True,
         )
-        self.assertRedirects(response, self.index_tasks_url)
+        self.assertRedirects(response, self.tasks_index_url)
         self.assertContains(response, self.update_message)
         self.assertContains(response, "Updated task name")
         actual_tasks_count = len(response.context["tasks"])
@@ -84,7 +84,7 @@ class TasksTest(TestCase):
         }
         self.assertContains(response, delete_confirm_message)
         response = self.client.post(self.tasks_delete_url, follow=True)
-        self.assertRedirects(response, self.index_tasks_url)
+        self.assertRedirects(response, self.tasks_index_url)
         self.assertContains(response, self.delete_message)
         actual_tasks_count = len(response.context["tasks"])
         self.assertEqual(actual_tasks_count, self.expected_tasks_count)

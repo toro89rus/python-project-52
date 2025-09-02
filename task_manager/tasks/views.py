@@ -31,6 +31,9 @@ class TaskIndexView(ListView):
         if self_tasks == "on":
             user_id = self.request.user.id
             queryset = queryset.filter(author__id=user_id)
+        label_id = self.request.GET.get("labels")
+        if label_id:
+            queryset = queryset.filter(labels__id=label_id)
         return queryset
 
     def get_context_data(self, **kwargs):
