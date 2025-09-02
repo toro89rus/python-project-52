@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 
-
 class UsersTest(TestCase):
     fixtures = ["users.json"]
     expected_users_count = 3
