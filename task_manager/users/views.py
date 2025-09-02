@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from task_manager.users.forms import UserForm
-from task_manager.mixins import OwnProfileMixin
+from task_manager.mixins import OwnProfileMixin, RestrictUserDeletionMixin
 from django.contrib.auth.decorators import login_not_required
 from django.utils.decorators import method_decorator
 
@@ -40,6 +40,7 @@ class UserUpdateView(
 
 class UserDeleteView(
     OwnProfileMixin,
+    RestrictUserDeletionMixin,
     SuccessMessageMixin,
     DeleteView,
 ):
