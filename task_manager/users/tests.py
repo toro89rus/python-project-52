@@ -3,7 +3,6 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-User = get_user_model()
 
 
 class UsersTest(TestCase):
@@ -102,6 +101,7 @@ class UsersTest(TestCase):
         self.assertContains(response, self.wrong_user_message)
 
     def test_user_delete(self):
+        User = get_user_model()
         user = User.objects.get(id=self.test_user_id)
         self.client.login(
             username=self.testuser_username, password=self.testuser_password
