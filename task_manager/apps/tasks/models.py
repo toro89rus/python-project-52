@@ -31,6 +31,9 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ["pk"]
+
 
 class TasksLabels(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)

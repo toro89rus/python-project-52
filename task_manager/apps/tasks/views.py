@@ -16,7 +16,7 @@ from task_manager.apps.core import text_constants
 
 
 class TaskIndexView(ListView):
-    queryset = Task.objects.all().order_by("id")
+    model = Task
     template_name = "tasks/index.html"
     context_object_name = "tasks"
 
