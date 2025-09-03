@@ -1,5 +1,10 @@
-from task_manager.apps.core.views import MainView, UserLoginView, UserLogoutView
 from django.urls import path
+
+from task_manager.apps.core.views import (
+    MainView,
+    UserLoginView,
+    UserLogoutView,
+    )
 
 urlpatterns = [
     path("", MainView.as_view(), name="main"),

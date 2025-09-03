@@ -2,10 +2,10 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
+from task_manager.apps.core import text_constants
+from task_manager.apps.core.mixins import RestrictStatusDeletionMixin
 from task_manager.apps.statuses.forms import StatusForm
 from task_manager.apps.statuses.models import Status
-from task_manager.apps.core.mixins import RestrictStatusDeletionMixin
-from task_manager.apps.core import text_constants
 
 
 class StatusIndexView(ListView):

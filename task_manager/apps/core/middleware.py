@@ -1,5 +1,6 @@
-from django.contrib.auth.middleware import LoginRequiredMiddleware
 from django.contrib import messages
+from django.contrib.auth.middleware import LoginRequiredMiddleware
+
 from task_manager.apps.core import text_constants
 
 

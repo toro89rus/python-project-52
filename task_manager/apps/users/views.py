@@ -1,13 +1,16 @@
-from task_manager.apps.users.models import User
+from django.contrib.auth.decorators import login_not_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from task_manager.apps.users.forms import UserForm
-from task_manager.apps.core.mixins import OwnProfileMixin, RestrictUserDeletionMixin
 from task_manager.apps.core import text_constants
-from django.contrib.auth.decorators import login_not_required
-from django.utils.decorators import method_decorator
+from task_manager.apps.core.mixins import (
+    OwnProfileMixin,
+    RestrictUserDeletionMixin,
+)
+from task_manager.apps.users.forms import UserForm
+from task_manager.apps.users.models import User
 
 
 @method_decorator(login_not_required, name="dispatch")

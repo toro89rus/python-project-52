@@ -1,20 +1,17 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-
 from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
-    ListView,
     UpdateView,
 )
-
-from task_manager.apps.core.mixins import OwnTaskMixin
-from task_manager.apps.tasks.forms import TaskFilterForm, TaskForm
-from task_manager.apps.tasks.models import Task
-from task_manager.apps.core import text_constants
-
 from django_filters.views import FilterView
+
+from task_manager.apps.core import text_constants
+from task_manager.apps.core.mixins import OwnTaskMixin
+from task_manager.apps.tasks.forms import TaskForm
+from task_manager.apps.tasks.models import Task
 
 
 class TaskIndexView(FilterView):

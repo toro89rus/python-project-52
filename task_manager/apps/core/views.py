@@ -1,12 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_not_required
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views import View
-from django.contrib.auth.decorators import login_not_required
 from django.utils.decorators import method_decorator
+from django.views import View
 
 from task_manager.apps.core import text_constants
 
