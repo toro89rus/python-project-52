@@ -16,5 +16,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "django-filter>=25.1",
     "ruff>=0.12.10",
 ]

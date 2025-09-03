@@ -6,7 +6,7 @@
 <div class="card mb-3">
 <div class="card-body bg-light">
     <form class="form-inline center" method="get" action="{% url 'tasks_index' %}">
-        {% bootstrap_form filter_form %}
+        {% bootstrap_form filter.form %}
         <input class="btn btn-primary" type="submit" value="{% trans "Show" %}">
     </form>
   </div>

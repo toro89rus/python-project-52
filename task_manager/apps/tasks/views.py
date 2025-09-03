@@ -14,37 +14,13 @@ from task_manager.apps.tasks.forms import TaskFilterForm, TaskForm
 from task_manager.apps.tasks.models import Task
 from task_manager.apps.core import text_constants
 
+from django_filters.views import FilterView
 
-class TaskIndexView(ListView):
+
+class TaskIndexView(FilterView):
     model = Task
     template_name = "tasks/index.html"
     context_object_name = "tasks"
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        status_id = self.request.GET.get("status")
-        if status_id:
-            queryset = queryset.filter(status__id=status_id)
-        executor_id = self.request.GET.get("executor")
-        if executor_id:
-            queryset = queryset.filter(executor__id=executor_id)
-        self_tasks = self.request.GET.get("self_tasks")
-        if self_tasks == "on":
-            user_id = self.request.user.id
-            queryset = queryset.filter(author__id=user_id)
-        label_id = self.request.GET.get("labels")
-        if label_id:
-            queryset = queryset.filter(labels__id=label_id)
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if self.request.GET:
-            filter_form = TaskFilterForm(self.request.GET)
-        else:
-            filter_form = TaskFilterForm()
-        context["filter_form"] = filter_form
-        return context
 
 
 class TaskCreateView(SuccessMessageMixin, CreateView):
