@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from task_manager.apps.core import text_constants
-from task_manager.apps.labels.fixtures.models import Label
+from task_manager.apps.labels.models import Label
 
 
 class StatusesTest(TestCase):
