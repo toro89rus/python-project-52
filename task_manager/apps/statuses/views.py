@@ -9,7 +9,7 @@ from task_manager.apps.core import text_constants
 
 
 class StatusIndexView(ListView):
-    queryset = Status.objects.all().order_by("id")
+    model = Status
     template_name = "statuses/index.html"
     context_object_name = "statuses"
 
