@@ -12,7 +12,7 @@ from django.utils.decorators import method_decorator
 
 @method_decorator(login_not_required, name="dispatch")
 class UserIndexView(ListView):
-    queryset = User.objects.all().order_by("id")
+    model = User
     template_name = "users/index.html"
     context_object_name = "users"
 
