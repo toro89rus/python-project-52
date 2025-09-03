@@ -1,9 +1,9 @@
-from django.contrib.auth.forms import BaseUserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from task_manager.users.models import User
 from django.utils.translation import gettext_lazy as _
 
 
-class UserForm(BaseUserCreationForm):
+class UserForm(UserCreationForm):
 
     class Meta:
         model = User

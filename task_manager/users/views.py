@@ -1,11 +1,11 @@
 from task_manager.users.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from task_manager.users.forms import UserForm
 from task_manager.mixins import OwnProfileMixin, RestrictUserDeletionMixin
+from task_manager.core import text_constants
 from django.contrib.auth.decorators import login_not_required
 from django.utils.decorators import method_decorator
 
@@ -21,7 +21,7 @@ class UserIndexView(ListView):
 class UserCreateView(SuccessMessageMixin, CreateView):
     model = User
     form_class = UserForm
-    success_message = _("User has been successfully registered")
+    success_message = text_constants.USER_CREATED
     template_name = "users/create.html"
     success_url = reverse_lazy("login")
 
@@ -33,7 +33,7 @@ class UserUpdateView(
 ):
     model = User
     form_class = UserForm
-    success_message = _("User has been successfully updated")
+    success_message = text_constants.USER_UPDATED
     template_name = "users/update.html"
     success_url = reverse_lazy("users_index")
 
@@ -45,6 +45,6 @@ class UserDeleteView(
     DeleteView,
 ):
     model = User
-    success_message = _("User has been successfully deleted")
+    success_message = text_constants.USER_DELETED
     template_name = "users/delete.html"
     success_url = reverse_lazy("users_index")

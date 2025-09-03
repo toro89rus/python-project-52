@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
 
+from task_manager.core import text_constants
 from task_manager.tasks.models import Task
 
 
@@ -13,10 +13,6 @@ class TasksTest(TestCase):
     delete_task_id = 5
     testuser_username = "user4"
     testuser_password = "123"
-    create_message = _("Task has been successfully created")
-    update_message = _("Task has been successfully updated")
-    delete_confirm_message = "Do you really want to delete %(name)s?"
-    delete_message = _("Task has been successfully deleted")
 
     login_url = reverse("login")
     tasks_index_url = reverse("tasks_index")
@@ -53,6 +49,7 @@ class TasksTest(TestCase):
             follow=True,
         )
         self.assertRedirects(response, self.tasks_index_url)
+        self.assertContains(response, text_constants.TASK_CREATED)
         self.assertContains(response, "New task")
         actual_tasks_count = len(response.context["tasks"])
         self.assertEqual(actual_tasks_count, self.expected_tasks_count + 1)
@@ -69,7 +66,7 @@ class TasksTest(TestCase):
             follow=True,
         )
         self.assertRedirects(response, self.tasks_index_url)
-        self.assertContains(response, self.update_message)
+        self.assertContains(response, text_constants.TASK_UPDATED)
         self.assertContains(response, "Updated task name")
         actual_tasks_count = len(response.context["tasks"])
         self.assertEqual(actual_tasks_count, self.expected_tasks_count)
@@ -79,21 +76,22 @@ class TasksTest(TestCase):
             name="Task_to_delete", status_id=1, executor_id=1, author_id=4
         )
         response = self.client.get(self.tasks_delete_url, follow=True)
-        delete_confirm_message = _(self.delete_confirm_message) % {
+        delete_confirm_message = text_constants.DELETE_CONFIRM % {
             "name": task_to_delete.name
         }
         self.assertContains(response, delete_confirm_message)
         response = self.client.post(self.tasks_delete_url, follow=True)
         self.assertRedirects(response, self.tasks_index_url)
-        self.assertContains(response, self.delete_message)
+        self.assertContains(response, text_constants.TASK_DELETED)
         actual_tasks_count = len(response.context["tasks"])
         self.assertEqual(actual_tasks_count, self.expected_tasks_count)
 
 
-class UnAuthenticatedStatusesTest(TestCase):
+class UnAuthenticatedTasksTest(TestCase):
     login_url = reverse("login")
     index_tasks_url = reverse("tasks_index")
 
     def test_tasks_index(self):
-        response = self.client.get(self.index_tasks_url)
+        response = self.client.get(self.index_tasks_url, follow=True)
         self.assertRedirects(response, self.login_url)
+        self.assertContains(response, text_constants.LOGIN_REQUIRED)

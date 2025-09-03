@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
 
+from task_manager.core import text_constants
 from task_manager.labels.models import Label
 
 
@@ -12,10 +12,6 @@ class StatusesTest(TestCase):
     test_label_id = 2
     testuser_username = "user4"
     testuser_password = "123"
-    create_message = _("Label has been successfully created")
-    update_message = _("Label has been successfully updated")
-    delete_confirm_message = "Do you really want to delete %(name)s?"
-    delete_message = _("Label has been successfully deleted")
 
     login_url = reverse("login")
     labels_index_url = reverse("labels_index")
@@ -47,6 +43,7 @@ class StatusesTest(TestCase):
         )
         self.assertRedirects(response, self.labels_index_url)
         self.assertContains(response, "Testing")
+        self.assertContains(response, text_constants.LABEL_CREATED)
         actual_labels_count = len(response.context["labels"])
         self.assertEqual(actual_labels_count, self.expected_labels_count + 1)
 
@@ -59,7 +56,7 @@ class StatusesTest(TestCase):
             follow=True,
         )
         self.assertRedirects(response, self.labels_index_url)
-        self.assertContains(response, self.update_message)
+        self.assertContains(response, text_constants.LABEL_UPDATED)
         self.assertContains(response, "Bug fixing")
         actual_labels_count = len(response.context["labels"])
         self.assertEqual(actual_labels_count, self.expected_labels_count)
@@ -67,13 +64,13 @@ class StatusesTest(TestCase):
     def test_labels_delete(self):
         label = Label.objects.get(id=self.test_label_id)
         response = self.client.get(self.labels_delete_url, follow=True)
-        delete_confirm_message = _(self.delete_confirm_message) % {
+        delete_confirm_message = text_constants.DELETE_CONFIRM % {
             "name": label.name
         }
         self.assertContains(response, delete_confirm_message)
         response = self.client.post(self.labels_delete_url, follow=True)
         self.assertRedirects(response, self.labels_index_url)
-        self.assertContains(response, self.delete_message)
+        self.assertContains(response, text_constants.LABEL_DELETED)
         actual_labels_count = len(response.context["labels"])
         self.assertEqual(actual_labels_count, self.expected_labels_count - 1)
 
@@ -83,5 +80,6 @@ class UnAuthenticatedLabelsTest(TestCase):
     labels_index_url = reverse("labels_index")
 
     def test_labels_index(self):
-        response = self.client.get(self.labels_index_url)
+        response = self.client.get(self.labels_index_url, follow=True)
         self.assertRedirects(response, self.login_url)
+        self.assertContains(response, text_constants.LOGIN_REQUIRED)

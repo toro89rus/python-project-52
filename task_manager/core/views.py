@@ -4,10 +4,11 @@ from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
-from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.contrib.auth.decorators import login_not_required
 from django.utils.decorators import method_decorator
+
+from task_manager.core import text_constants
 
 
 @method_decorator(login_not_required, name="dispatch")
@@ -20,12 +21,12 @@ class MainView(View):
 class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = "core/login.html"
     next_page = reverse_lazy("main")
-    success_message = _("You are logged in")
+    success_message = text_constants.LOGIN
 
 
 @method_decorator(login_not_required, name="dispatch")
 class UserLogoutView(View):
     def post(self, request, *args, **kwargs):
         logout(request)
-        messages.info(request, _("You've successfully logged out"))
+        messages.info(request, text_constants.LOGOUT)
         return redirect(reverse("main"))

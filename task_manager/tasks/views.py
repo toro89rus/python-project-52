@@ -1,6 +1,6 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
+
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -12,6 +12,7 @@ from django.views.generic import (
 from task_manager.mixins import OwnTaskMixin
 from task_manager.tasks.forms import TaskFilterForm, TaskForm
 from task_manager.tasks.models import Task
+from task_manager.core import text_constants
 
 
 class TaskIndexView(ListView):
@@ -49,7 +50,7 @@ class TaskIndexView(ListView):
 class TaskCreateView(SuccessMessageMixin, CreateView):
     model = Task
     form_class = TaskForm
-    success_message = _("Task has been successfully created")
+    success_message = text_constants.TASK_CREATED
     template_name = "tasks/create.html"
     success_url = reverse_lazy("tasks_index")
 
@@ -64,7 +65,7 @@ class TaskUpdateView(
 ):
     model = Task
     form_class = TaskForm
-    success_message = _("Task has been successfully updated")
+    success_message = text_constants.TASK_UPDATED
     template_name = "tasks/update.html"
     success_url = reverse_lazy("tasks_index")
 
@@ -75,7 +76,7 @@ class TaskDeleteView(
     DeleteView,
 ):
     model = Task
-    success_message = _("Task has been successfully deleted")
+    success_message = text_constants.TASK_DELETED
     template_name = "tasks/delete.html"
     success_url = reverse_lazy("tasks_index")
 

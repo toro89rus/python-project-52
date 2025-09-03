@@ -1,7 +1,9 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 from django.test import TestCase
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
+
+from task_manager.core import text_constants
 
 
 class UsersTest(TestCase):
@@ -10,12 +12,9 @@ class UsersTest(TestCase):
     test_user_id = 2
     testuser_username = "user2"
     testuser_password = "123"
-    mismatched_passwords_message = _("The two password fields didn’t match.")
-    create_message = _("User has been successfully registered")
-    update_message = _("User has been successfully updated")
-    wrong_user_message = _("You can&#x27;t edit other user")
-    delete_confirm_message = "Do you really want to delete %(full_name)s?"
-    delete_message = _("User has been successfully deleted")
+    mismatched_passwords_message = UserCreationForm.error_messages[
+        "password_mismatch"
+    ]
 
     login_url = reverse("login")
     index_users_url = reverse("users_index")
@@ -49,7 +48,7 @@ class UsersTest(TestCase):
             follow=True,
         )
         self.assertRedirects(response, self.login_url)
-        self.assertContains(response, self.create_message)
+        self.assertContains(response, text_constants.USER_CREATED)
 
         response = self.client.get(self.index_users_url)
         self.assertContains(response, "John Doe")
@@ -86,7 +85,7 @@ class UsersTest(TestCase):
             follow=True,
         )
         self.assertRedirects(response, self.index_users_url)
-        self.assertContains(response, self.update_message)
+        self.assertContains(response, text_constants.USER_UPDATED)
         self.assertContains(response, "Bob Tompson")
         actual_users_count = len(response.context["users"])
         self.assertEqual(actual_users_count, self.expected_users_count)
@@ -97,7 +96,7 @@ class UsersTest(TestCase):
         )
         response = self.client.get(self.update_wrong_user_url, follow=True)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, self.wrong_user_message)
+        self.assertContains(response, text_constants.USER_RESTRICT_UPDATE)
 
     def test_user_delete(self):
         User = get_user_model()
@@ -106,12 +105,12 @@ class UsersTest(TestCase):
             username=self.testuser_username, password=self.testuser_password
         )
         response = self.client.get(self.delete_user_url, follow=True)
-        delete_confirm_message = _(self.delete_confirm_message) % {
-            "full_name": user.get_full_name()
+        delete_confirm_message = text_constants.DELETE_CONFIRM % {
+            "name": str(user)
         }
         self.assertContains(response, delete_confirm_message)
         response = self.client.post(self.delete_user_url, follow=True)
         self.assertRedirects(response, self.index_users_url)
-        self.assertContains(response, self.delete_message)
+        self.assertContains(response, text_constants.USER_DELETED)
         actual_users_count = len(response.context["users"])
         self.assertEqual(actual_users_count, self.expected_users_count - 1)
