@@ -22,7 +22,7 @@ class Task(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.RESTRICT, related_name="tasks_created"
     )
-    labels = models.ManyToManyField(
+    label = models.ManyToManyField(
         Label,
         through="TasksLabels",
         related_name="tasks_with_labels",
