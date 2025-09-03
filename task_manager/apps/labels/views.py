@@ -9,7 +9,7 @@ from task_manager.apps.core import text_constants
 
 
 class LabelIndexView(ListView):
-    queryset = Label.objects.all().order_by("id")
+    model = Label
     template_name = "labels/index.html"
     context_object_name = "labels"
 
