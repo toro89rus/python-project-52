@@ -49,11 +49,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "task_manager",
-    "task_manager.core",
-    "task_manager.users",
-    "task_manager.statuses",
-    "task_manager.tasks",
-    "task_manager.labels",
+    "task_manager.apps.core",
+    "task_manager.apps.users",
+    "task_manager.apps.statuses",
+    "task_manager.apps.tasks",
+    "task_manager.apps.labels",
 ]
 
 MIDDLEWARE = [
@@ -64,7 +64,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "task_manager.middleware.LoginRequiredWithMessageMiddleware",
+    "task_manager.apps.core.middleware.LoginRequiredWithMessageMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
