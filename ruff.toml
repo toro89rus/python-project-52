@@ -1,14 +1,11 @@
-exclude = ["migrations", "settings.py", "tests.py"]
+exclude = ["migrations", "settings.py"]
 
 line-length = 80
 
 [lint.per-file-ignores]
   # init modules can contain the local imports, logic, unused imports
 "__init__.py" = ["F401"]
-  # temporary, delete after finishing the project
-"admin.py" = ["F401"]
-  # temporary, delete after finishing the project
-"models.py" = ["F401"]
+
 [lint]
 preview = true
 select = ["E", "F", "I", "C90"]
