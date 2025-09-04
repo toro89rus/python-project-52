@@ -111,7 +111,7 @@ msgstr "Вы уверены, что хотите удалить %(name)s?"
 #: task_manager/templates/statuses/index.html:15
 #: task_manager/templates/tasks/index.html:16
 msgid "Name"
-msgstr "Название"
+msgstr "Имя"
 
 #: task_manager/apps/tasks/forms.py:21
 #: task_manager/templates/tasks/detail.html:27
