@@ -67,6 +67,7 @@ MIDDLEWARE = [
     "task_manager.apps.core.middleware.LoginRequiredWithMessageMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "task_manager.apps.core.middleware.RollbarNotifierMiddleware",
 ]
 
 ROOT_URLCONF = "task_manager.urls"
@@ -138,3 +139,10 @@ STATIC_ROOT = BASE_DIR / "static_files"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOCALE_PATHS = [BASE_DIR / "locale"]
+
+ROLLBAR = {
+    "access_token": config.rollbar_token,
+    "environment": "development" if DEBUG else "production",
+    "code_version": "1.0",
+    "root": BASE_DIR,
+}
