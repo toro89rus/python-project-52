@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-04 19:41+0300\n"
+"POT-Creation-Date: 2025-09-04 20:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -174,7 +174,7 @@ msgstr "Вход"
 #: task_manager/templates/core/login.html:16
 #: task_manager/templates/core/navbar.html:31
 msgid "Sign in"
-msgstr "Вход"
+msgstr "Войти"
 
 #: task_manager/templates/core/main.html:7
 #: task_manager/templates/core/navbar.html:4
@@ -245,8 +245,6 @@ msgid "Edit"
 msgstr "Изменить"
 
 #: task_manager/templates/labels/update.html:5
-
-#| msgid "User update"
 msgid "Label update"
 msgstr "Изменить метку"
 
