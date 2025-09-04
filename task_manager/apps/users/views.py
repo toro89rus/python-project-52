@@ -9,7 +9,7 @@ from task_manager.apps.core.mixins import (
     OwnProfileMixin,
     RestrictUserDeletionMixin,
 )
-from task_manager.apps.users.forms import UserForm
+from task_manager.apps.users.forms import UserCreateForm, UserUpdateForm
 from task_manager.apps.users.models import User
 
 
@@ -23,7 +23,7 @@ class UserIndexView(ListView):
 @method_decorator(login_not_required, name="dispatch")
 class UserCreateView(SuccessMessageMixin, CreateView):
     model = User
-    form_class = UserForm
+    form_class = UserCreateForm
     success_message = text_constants.USER_CREATED
     template_name = "users/create.html"
     success_url = reverse_lazy("login")
@@ -35,7 +35,7 @@ class UserUpdateView(
     UpdateView,
 ):
     model = User
-    form_class = UserForm
+    form_class = UserUpdateForm
     success_message = text_constants.USER_UPDATED
     template_name = "users/update.html"
     success_url = reverse_lazy("users_index")
