@@ -306,7 +306,6 @@ msgid "Registration"
 msgstr "Регистрация"
 
 #: task_manager/templates/users/create.html:6
-#, fuzzy
 #| msgid "Sign up"
 msgctxt "sign up page button"
 msgid "Sign up"
