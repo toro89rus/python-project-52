@@ -33,8 +33,8 @@ class TaskFilterForm(django_filters.FilterSet):
         queryset=User.objects.all(), label=_("Executor")
     )
 
-    labels = django_filters.ModelChoiceFilter(
-        queryset=Label.objects.all(), label=_("Label")
+    label = django_filters.ModelChoiceFilter(
+        queryset=Label.objects.all(), label=_("Label"), field_name="labels"
     )
 
     self_tasks = django_filters.BooleanFilter(
