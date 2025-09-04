@@ -33,9 +33,9 @@ class TaskFilterForm(django_filters.FilterSet):
         queryset=User.objects.all(), label=_("Executor")
     )
 
-    label = django_filters.ModelChoiceFilter(
-            queryset=Label.objects.all(), label=_("Label")
-        )
+    labels = django_filters.ModelChoiceFilter(
+        queryset=Label.objects.all(), label=_("Label")
+    )
 
     self_tasks = django_filters.BooleanFilter(
         widget=forms.CheckboxInput,
