@@ -54,15 +54,15 @@ msgstr "Невозможно удалить пользователя, потом
 
 #: task_manager/apps/core/text_constants.py:13
 msgid "Status has been successfully registered"
-msgstr "Пользователь успешно зарегистрирован"
+msgstr "Статус успешно создана"
 
 #: task_manager/apps/core/text_constants.py:14
 msgid "Status has been successfully updated"
-msgstr "Пользователь успешно изменен"
+msgstr "Статус успешно изменен"
 
 #: task_manager/apps/core/text_constants.py:15
 msgid "Status has been successfully deleted"
-msgstr "Пользователь успешно удален"
+msgstr "Статус успешно удален"
 
 #: task_manager/apps/core/text_constants.py:16
 msgid "Can't delete, status is being used"
