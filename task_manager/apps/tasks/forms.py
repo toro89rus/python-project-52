@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 from task_manager.apps.labels.models import Label
 from task_manager.apps.tasks.models import Task
+from task_manager.apps.statuses.models import Status
+from task_manager.apps.users.models import User
 
 
 class TaskForm(forms.ModelForm):
@@ -15,9 +17,13 @@ class TaskForm(forms.ModelForm):
 
 class TaskFilterForm(django_filters.FilterSet):
 
-    class Meta:
-        model = Task
-        fields = ["status", "executor"]
+    status = django_filters.ModelChoiceFilter(
+        queryset=Status.objects.all(), label=_("Status")
+    )
+
+    executor = django_filters.ModelChoiceFilter(
+        queryset=User.objects.all(), label=_("Executor")
+    )
 
     label = django_filters.ModelChoiceFilter(
             queryset=Label.objects.all(), label=_("Label")
