@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from task_manager.apps.core import text_constants
-from task_manager.apps.core.mixins import RestrictStatusDeletionMixin
+from task_manager.apps.core.mixins import RestrictLabelDeletionMixin
 from task_manager.apps.labels.forms import LabelsForm
 from task_manager.apps.labels.models import Label
 
@@ -34,7 +34,7 @@ class LabelUpdateView(
 
 
 class LabelDeleteView(
-    RestrictStatusDeletionMixin,
+    RestrictLabelDeletionMixin,
     SuccessMessageMixin,
     DeleteView,
 ):

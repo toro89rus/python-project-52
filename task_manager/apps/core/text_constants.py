@@ -18,6 +18,7 @@ STATUS_RESTRICT_DELETE = _("Can't delete, status is being used")
 LABEL_CREATED = _("Label has been successfully registered")
 LABEL_UPDATED = _("Label has been successfully updated")
 LABEL_DELETED = _("Label has been successfully deleted")
+LABEL_RESTRICT_DELETE = _("Can't delete, label is being used")
 
 TASK_CREATED = _("Task has been successfully registered")
 TASK_UPDATED = _("Task has been successfully updated")

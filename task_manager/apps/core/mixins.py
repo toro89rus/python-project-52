@@ -54,3 +54,8 @@ class RestrictStatusDeletionMixin(RedirectOnRestrictedDeletionMixin):
 class RestrictUserDeletionMixin(RedirectOnRestrictedDeletionMixin):
     error_message = text_constants.USER_RESTRICT_DELETE
     redirect_url = "users_index"
+
+
+class RestrictLabelDeletionMixin(RedirectOnRestrictedDeletionMixin):
+    error_message = text_constants.LABEL_RESTRICT_DELETE
+    redirect_url = "labels_index"
