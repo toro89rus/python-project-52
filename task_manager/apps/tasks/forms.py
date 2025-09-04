@@ -14,6 +14,14 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ["name", "description", "status", "executor", "label"]
 
+        labels = {
+            "name": _("Name"),
+            "description": _("Description"),
+            "status": _("Status"),
+            "executor": _("Executor"),
+            "label": _("Labels"),
+        }
+
 
 class TaskFilterForm(django_filters.FilterSet):
 

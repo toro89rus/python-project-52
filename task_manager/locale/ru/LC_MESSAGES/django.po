@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-04 20:30+0300\n"
+"POT-Creation-Date: 2025-09-04 20:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,29 +107,41 @@ msgid "Do you really want to delete %(name)s?"
 msgstr "Вы уверены, что хотите удалить %(name)s?"
 
 #: task_manager/apps/labels/forms.py:12 task_manager/apps/statuses/forms.py:12
+#: task_manager/apps/tasks/forms.py:18
 #: task_manager/templates/labels/index.html:15
 #: task_manager/templates/statuses/index.html:15
 #: task_manager/templates/tasks/index.html:16
 msgid "Name"
 msgstr "Имя"
 
-#: task_manager/apps/tasks/forms.py:21
+#: task_manager/apps/tasks/forms.py:19
+msgid "Description"
+msgstr "Описание"
+
+#: task_manager/apps/tasks/forms.py:20 task_manager/apps/tasks/forms.py:29
 #: task_manager/templates/tasks/detail.html:27
 #: task_manager/templates/tasks/index.html:17
 msgid "Status"
 msgstr "Статус"
 
-#: task_manager/apps/tasks/forms.py:25
+#: task_manager/apps/tasks/forms.py:21 task_manager/apps/tasks/forms.py:33
 #: task_manager/templates/tasks/detail.html:23
 #: task_manager/templates/tasks/index.html:19
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task_manager/apps/tasks/forms.py:29
+#: task_manager/apps/tasks/forms.py:22
+#: task_manager/templates/core/navbar.html:18
+#: task_manager/templates/labels/index.html:9
+#: task_manager/templates/tasks/detail.html:35
+msgid "Labels"
+msgstr "Метки"
+
+#: task_manager/apps/tasks/forms.py:37
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/apps/tasks/forms.py:35
+#: task_manager/apps/tasks/forms.py:43
 msgid "Own tasks only"
 msgstr "Только свои задачи"
 
@@ -191,12 +203,6 @@ msgstr "Пользователи"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: task_manager/templates/core/navbar.html:18
-#: task_manager/templates/labels/index.html:9
-#: task_manager/templates/tasks/detail.html:35
-msgid "Labels"
-msgstr "Метки"
-
 #: task_manager/templates/core/navbar.html:21
 #: task_manager/templates/tasks/index.html:9
 msgid "Tasks"
@@ -212,7 +218,6 @@ msgid "Sign in"
 msgstr "Вход"
 
 #: task_manager/templates/core/navbar.html:34
-#| msgid "Sign up"
 msgctxt "navbar link"
 msgid "Sign up"
 msgstr "Регистрация"
@@ -306,7 +311,6 @@ msgid "Registration"
 msgstr "Регистрация"
 
 #: task_manager/templates/users/create.html:6
-#| msgid "Sign up"
 msgctxt "sign up page button"
 msgid "Sign up"
 msgstr "Зарегистрировать"
