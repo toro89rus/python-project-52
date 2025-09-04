@@ -216,7 +216,7 @@ msgstr "Вход"
 #: task_manager/templates/core/navbar.html:34
 #: task_manager/templates/users/create.html:6
 msgid "Sign up"
-msgstr "Регистрация"
+msgstr "Зарегистрировать"
 
 #: task_manager/templates/labels/create.html:5
 #: task_manager/templates/labels/index.html:10
