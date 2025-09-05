@@ -10,9 +10,7 @@
   <h1 class="my-4">{% trans "Login"%}</h1>
     <form method="post">
         {% csrf_token %}
-        <table class="mb-3">
             {% bootstrap_form form %}
-        </table>
     <input class="btn btn-primary" type="submit" value="{% trans "Sign in" context "login button" %}" />
   </form>
 {% endblock %}
