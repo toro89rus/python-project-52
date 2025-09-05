@@ -11,6 +11,9 @@ migrate:
 	uv run python manage.py migrate
 
 start:
+	uv run python manage.py runserver
+
+start-dev:
 	uv run python manage.py runserver --nostatic
 
 render-start:
@@ -18,3 +21,6 @@ render-start:
 
 lint:
 	uv run ruff check task_manager
+
+test:
+	uv run manage.py test

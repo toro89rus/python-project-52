@@ -17,6 +17,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "coverage>=7.10.6",
     "django-filter>=25.1",
     "ruff>=0.12.10",
 ]
