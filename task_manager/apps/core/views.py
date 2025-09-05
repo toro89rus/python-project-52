@@ -1,10 +1,9 @@
 from django.contrib import messages
-from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_not_required
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect, render
-from django.urls import reverse, reverse_lazy
+from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import View
 
@@ -25,8 +24,9 @@ class UserLoginView(SuccessMessageMixin, LoginView):
 
 
 @method_decorator(login_not_required, name="dispatch")
-class UserLogoutView(View):
+class UserLogoutView(LogoutView):
+    next_page = reverse_lazy("main")
+
     def post(self, request, *args, **kwargs):
-        logout(request)
         messages.info(request, text_constants.LOGOUT)
-        return redirect(reverse("main"))
+        return super().post(request, *args, **kwargs)
