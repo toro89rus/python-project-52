@@ -32,7 +32,7 @@ It provides user authentication and role-based access to core features such as m
 - `Python 3.12`
 - `uv`
 - `make`
-- `SQLite (default)/**PostgreSQL**(production)`
+- `SQLite(default)/PostgreSQL(production)`
 
 ### Installation
 
