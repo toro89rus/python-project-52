@@ -6,11 +6,11 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=toro89rus_python-project-52&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=toro89rus_python-project-52)
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
+![Python]![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
-![Postgres](https://img.shields.io/badge/Postgres-%23316192.svg?logo=postgresql&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=fff)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
 ### Description
@@ -32,7 +32,7 @@ It provides user authentication and role-based access to core features such as m
 - `Python 3.12`
 - `uv`
 - `make`
-- **SQLite (default)**/**PostgreSQL**(production)
+- `SQLite (default)/**PostgreSQL**(production)`
 
 ### Installation
 
