@@ -11,6 +11,7 @@ class Config:
         self.secret_key = os.getenv("SECRET_KEY")
         self.rollbar_token = os.getenv("ROLLBAR_TOKEN")
         self.is_production = os.getenv("IS_PRODUCTION", "true") == "true"
+        self.hosts = os.getenv("HOSTS")
 
     def setup_database(self, base_dir):
         if self.is_production:
@@ -25,6 +26,11 @@ class Config:
 
     @property
     def allowed_hosts(self):
+        allowed_hosts = []
+        if self.hosts:
+            allowed_hosts = [
+                host_name.strip() for host_name in self.hosts.split(",")
+            ]
         if self.is_production:
-            return ["webserver", "task-manager-2c0i.onrender.com"]
-        return ["localhost", "127.0.0.1"]
+            return ["webserver", *allowed_hosts]
+        return ["localhost", "127.0.0.1", *allowed_hosts]
