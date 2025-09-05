@@ -16,7 +16,7 @@ class LoginRequiredWithMessageMiddleware(LoginRequiredMiddleware):
 class CustomRollbarNotifierMiddleware(RollbarNotifierMiddleware):
 
     def get_payload_data(self, request, exc):
-        payload_data = dict()
+        payload_data = {}
 
         if not request.user.is_anonymous:
             payload_data = {

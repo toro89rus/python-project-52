@@ -99,8 +99,8 @@ class UsersTest(TestCase):
         self.assertContains(response, text_constants.USER_RESTRICT_UPDATE)
 
     def test_user_delete(self):
-        User = get_user_model()
-        user = User.objects.get(id=self.test_user_id)
+        user_model = get_user_model()
+        user = user_model.objects.get(id=self.test_user_id)
         self.client.login(
             username=self.testuser_username, password=self.testuser_password
         )
