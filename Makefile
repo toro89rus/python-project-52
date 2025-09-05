@@ -11,7 +11,7 @@ migrate:
 	uv run python manage.py migrate
 
 start:
-	uv run python manage.py runserver
+	uv run python manage.py runserver --nostatic
 
 render-start:
 	gunicorn task_manager.wsgi
