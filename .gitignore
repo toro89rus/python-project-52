@@ -3,6 +3,6 @@ __pycache__
 .vscode/
 .env
 .python-version
-static_files/
+staticfiles/
 .ruff_cache
 db.sqlite3
