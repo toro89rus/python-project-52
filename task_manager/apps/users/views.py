@@ -6,8 +6,8 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from task_manager.apps.core import text_constants
 from task_manager.apps.core.mixins import (
-    OwnProfileMixin,
-    RestrictUserDeletionMixin,
+    RestrictUserDeleteMixin,
+    RestrictUserUpdateMixin,
 )
 from task_manager.apps.users.forms import UserCreateForm, UserUpdateForm
 from task_manager.apps.users.models import User
@@ -30,7 +30,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 
 class UserUpdateView(
-    OwnProfileMixin,
+    RestrictUserUpdateMixin,
     SuccessMessageMixin,
     UpdateView,
 ):
@@ -42,8 +42,8 @@ class UserUpdateView(
 
 
 class UserDeleteView(
-    OwnProfileMixin,
-    RestrictUserDeletionMixin,
+    RestrictUserUpdateMixin,
+    RestrictUserDeleteMixin,
     SuccessMessageMixin,
     DeleteView,
 ):

@@ -18,7 +18,7 @@ class PermissionDeniedMixin(UserPassesTestMixin):
         return super().dispatch(request, *args, **kwargs)
 
 
-class OwnProfileMixin(PermissionDeniedMixin):
+class RestrictUserUpdateMixin(PermissionDeniedMixin):
     error_message = text_constants.USER_RESTRICT_UPDATE
     redirect_url = "users_index"
 
@@ -26,7 +26,7 @@ class OwnProfileMixin(PermissionDeniedMixin):
         return self.request.user.id == self.get_object().id
 
 
-class OwnTaskMixin(PermissionDeniedMixin):
+class RestrictTaskUpdateMixin(PermissionDeniedMixin):
     error_message = text_constants.TASK_RESTRICT_DELETE
     redirect_url = "tasks_index"
 
@@ -34,7 +34,7 @@ class OwnTaskMixin(PermissionDeniedMixin):
         return self.request.user.id == self.get_object().author_id
 
 
-class RedirectOnRestrictedDeletionMixin:
+class RedirectOnRestrictedDeleteMixin:
     error_message = "You can't delete this"
     redirect_url = "main"
 
@@ -46,16 +46,16 @@ class RedirectOnRestrictedDeletionMixin:
             return redirect(reverse_lazy(self.redirect_url))
 
 
-class RestrictStatusDeletionMixin(RedirectOnRestrictedDeletionMixin):
+class RestrictStatusDeleteMixin(RedirectOnRestrictedDeleteMixin):
     error_message = text_constants.STATUS_RESTRICT_DELETE
     redirect_url = "statuses_index"
 
 
-class RestrictUserDeletionMixin(RedirectOnRestrictedDeletionMixin):
+class RestrictUserDeleteMixin(RedirectOnRestrictedDeleteMixin):
     error_message = text_constants.USER_RESTRICT_DELETE
     redirect_url = "users_index"
 
 
-class RestrictLabelDeletionMixin(RedirectOnRestrictedDeletionMixin):
+class RestrictLabelDeleteMixin(RedirectOnRestrictedDeleteMixin):
     error_message = text_constants.LABEL_RESTRICT_DELETE
     redirect_url = "labels_index"
