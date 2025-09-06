@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from task_manager.apps.core import text_constants
 
 
-class PermissionDeniedMixin(UserPassesTestMixin):
+class UserPassesTestWithMessageMixin(UserPassesTestMixin):
     error_message = "You don't have permission to do this"
     redirect_url = "main"
 
@@ -18,16 +18,16 @@ class PermissionDeniedMixin(UserPassesTestMixin):
         return super().dispatch(request, *args, **kwargs)
 
 
-class RestrictUserUpdateMixin(PermissionDeniedMixin):
-    error_message = text_constants.USER_RESTRICT_UPDATE
+class UserIsProfileOwnerMixin(UserPassesTestWithMessageMixin):
+    error_message = text_constants.USER_PERMISSION_DENIED
     redirect_url = "users_index"
 
     def test_func(self):
         return self.request.user.id == self.get_object().id
 
 
-class RestrictTaskUpdateMixin(PermissionDeniedMixin):
-    error_message = text_constants.TASK_RESTRICT_DELETE
+class UserIsTaskAuthorMixin(UserPassesTestWithMessageMixin):
+    error_message = text_constants.TASK_PERMISSION_DENIED
     redirect_url = "tasks_index"
 
     def test_func(self):

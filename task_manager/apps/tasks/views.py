@@ -4,7 +4,7 @@ from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 from django_filters.views import FilterView
 
 from task_manager.apps.core import text_constants
-from task_manager.apps.core.mixins import RestrictTaskUpdateMixin
+from task_manager.apps.core.mixins import UserIsTaskAuthorMixin
 from task_manager.apps.tasks.forms import TaskForm
 from task_manager.apps.tasks.models import Task
 
@@ -39,7 +39,7 @@ class TaskUpdateView(
 
 
 class TaskDeleteView(
-    RestrictTaskUpdateMixin,
+    UserIsTaskAuthorMixin,
     SuccessMessageMixin,
     DeleteView,
 ):
