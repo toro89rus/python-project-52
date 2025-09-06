@@ -20,7 +20,7 @@ class MainView(View):
 class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = "core/login.html"
     next_page = reverse_lazy("main")
-    success_message = text_constants.LOGIN
+    success_message = text_constants.LOGIN_SUCCESS
 
 
 @method_decorator(login_not_required, name="dispatch")
@@ -28,5 +28,5 @@ class UserLogoutView(LogoutView):
     next_page = reverse_lazy("main")
 
     def post(self, request, *args, **kwargs):
-        messages.info(request, text_constants.LOGOUT)
+        messages.info(request, text_constants.LOGOUT_SUCCESS)
         return super().post(request, *args, **kwargs)
