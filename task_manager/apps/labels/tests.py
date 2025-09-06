@@ -5,6 +5,8 @@ from django.urls import reverse
 from task_manager.apps.core import text_constants
 from task_manager.apps.labels.models import Label
 
+from unittest_parametrize import ParametrizedTestCase, parametrize
+
 
 class StatusesTest(TestCase):
     fixtures = ["labels.json", "users.json"]
@@ -75,11 +77,17 @@ class StatusesTest(TestCase):
         self.assertEqual(actual_labels_count, self.expected_labels_count - 1)
 
 
-class UnAuthenticatedLabelsTest(TestCase):
+class UnAuthenticatedLabelsTest(ParametrizedTestCase, TestCase):
     login_url = reverse("login")
-    labels_index_url = reverse("labels_index")
+    urls = [
+        (reverse("labels_index"), login_url),
+        (reverse("labels_create"), login_url),
+        (reverse("labels_update", kwargs={"pk": 1}), login_url),
+        (reverse("labels_delete", kwargs={"pk": 1}), login_url),
+    ]
 
-    def test_labels_index(self):
-        response = self.client.get(self.labels_index_url, follow=True)
-        self.assertRedirects(response, self.login_url)
+    @parametrize("url,login_url", urls)
+    def test_labels_login(self, url, login_url):
+        response = self.client.get(url, follow=True)
+        self.assertRedirects(response, login_url)
         self.assertContains(response, text_constants.LOGIN_REQUIRED)

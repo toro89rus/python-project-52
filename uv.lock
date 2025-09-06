@@ -207,6 +207,7 @@ dev = [
     { name = "coverage" },
     { name = "django-filter" },
     { name = "ruff" },
+    { name = "unittest-parametrize" },
 ]
 
 [package.metadata]
@@ -226,6 +227,7 @@ dev = [
     { name = "coverage", specifier = ">=7.10.6" },
     { name = "django-filter", specifier = ">=25.1" },
     { name = "ruff", specifier = ">=0.12.10" },
+    { name = "unittest-parametrize", specifier = ">=1.7.0" },
 ]
 
 [[package]]
@@ -355,6 +357,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/95/32/1a225d6164441be760d75c2c42e2780dc0873fe382da3e98a2e1e48361e5/tzdata-2025.2.tar.gz", hash = "sha256:b60a638fcc0daffadf82fe0f57e53d06bdec2f36c4df66280ae79bce6bd6f2b9", size = 196380 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5c/23/c7abc0ca0a1526a0774eca151daeb8de62ec457e77262b66b359c3c7679e/tzdata-2025.2-py2.py3-none-any.whl", hash = "sha256:1a403fada01ff9221ca8044d701868fa132215d84beb92242d9acd2147f667a8", size = 347839 },
+]
+
+[[package]]
+name = "unittest-parametrize"
+version = "1.7.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/24/7a/3170ec4f3d0c9b875376a7fc4cd96a1cdda4e6b6f877ede7ae07b1423d73/unittest_parametrize-1.7.0.tar.gz", hash = "sha256:fa7b016878c33199eb6d4f3353d6c830c1bcdce7b996cc7417398ef2751fc949", size = 14715 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e5/5a/dfdcb42bde086e2807e50c9847fe5f1265f08b1de9b0c445d0f001f89fea/unittest_parametrize-1.7.0-py3-none-any.whl", hash = "sha256:07c82a26101f5ac6c5059995ec60c6b1a8268bcf7e5f4bdae3e205d8195bc876", size = 9117 },
 ]
 
 [[package]]

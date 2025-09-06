@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from unittest_parametrize import ParametrizedTestCase, parametrize
 
 from task_manager.apps.core import text_constants
 from task_manager.apps.statuses.models import Status
@@ -78,11 +79,17 @@ class StatusesTest(TestCase):
         )
 
 
-class UnAuthenticatedStatusesTest(TestCase):
+class UnAuthenticatedStatusesTest(ParametrizedTestCase, TestCase):
     login_url = reverse("login")
-    index_statuses_url = reverse("statuses_index")
+    urls = [
+        (reverse("statuses_index"), login_url),
+        (reverse("statuses_create"), login_url),
+        (reverse("statuses_update", kwargs={"pk": 1}), login_url),
+        (reverse("statuses_delete", kwargs={"pk": 1}), login_url),
+    ]
 
-    def test_status_index(self):
-        response = self.client.get(self.index_statuses_url, follow=True)
-        self.assertRedirects(response, self.login_url)
+    @parametrize("url,login_url", urls)
+    def test_statuses_login(self, url, login_url):
+        response = self.client.get(url, follow=True)
+        self.assertRedirects(response, login_url)
         self.assertContains(response, text_constants.LOGIN_REQUIRED)
