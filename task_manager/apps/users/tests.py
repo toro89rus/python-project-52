@@ -33,7 +33,7 @@ class UnAuthenticatedUsersTest(TestCase):
                 "first_name": "John",
                 "last_name": "Doe",
                 "username": "john12",
-                "password1": "123",
+                "password1": "123",  # NOSONAR
                 "password2": "123",
             },
             follow=True,
@@ -53,8 +53,8 @@ class UnAuthenticatedUsersTest(TestCase):
                 "first_name": "John",
                 "last_name": "Doe",
                 "username": "john12",
-                "password1": "123",
-                "password2": "321",
+                "password1": "123",  # NOSONAR
+                "password2": "321",  # NOSONAR
             },
         )
         self.assertEqual(response.status_code, 200)
@@ -64,7 +64,7 @@ class UnAuthenticatedUsersTest(TestCase):
 class AuthenticatedUsersTest(TestCase):
     fixtures = ["users.json"]
     testuser_username = "user4"
-    testuser_password = "123"
+    testuser_password = "123"  # NOSONAR
     test_user_id = 4
     expected_users_count = 4
 

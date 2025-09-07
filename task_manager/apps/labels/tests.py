@@ -12,7 +12,7 @@ class StatusesTest(TestCase):
     expected_labels_count = 3
     test_label_id = 2
     testuser_username = "user4"
-    testuser_password = "123"  # NO SONAR
+    testuser_password = "123"  # NOSONAR
 
     login_url = reverse("login")
     labels_index_url = reverse("labels_index")

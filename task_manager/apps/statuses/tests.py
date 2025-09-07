@@ -11,7 +11,7 @@ class StatusesTest(TestCase):
     expected_statuses_count = 3
     test_status_id = 2
     testuser_username = "user2"
-    testuser_password = "123"  # NO SONAR
+    testuser_password = "123"  # NOSONAR
 
     login_url = reverse("login")
     index_statuses_url = reverse("statuses_index")

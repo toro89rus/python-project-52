@@ -18,7 +18,7 @@ class TasksTest(TestCase):
     delete_task_id = 5
     wrong_delete_task_id = 2
     testuser_username = "user4"
-    testuser_password = "123"  # NOSONAR
+    testuser_password = "123"  #NOSONAR
 
     new_task_data = {
         "name": "New task",
