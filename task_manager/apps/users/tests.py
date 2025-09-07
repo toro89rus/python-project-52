@@ -34,7 +34,7 @@ class UnAuthenticatedUsersTest(TestCase):
                 "last_name": "Doe",
                 "username": "john12",
                 "password1": "123",  # NOSONAR
-                "password2": "123",
+                "password2": "123",  # NOSONAR
             },
             follow=True,
         )
