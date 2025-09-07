@@ -23,7 +23,6 @@ class UserIsProfileOwnerMixin(UserPassesTestWithMessageMixin):
     redirect_url = "users_index"
 
     def test_func(self):
-        print("test_func called")
         return self.request.user.id == self.get_object().id
 
 
