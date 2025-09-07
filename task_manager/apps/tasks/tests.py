@@ -8,7 +8,7 @@ from task_manager.apps.tasks.models import Task
 
 
 class TasksTest(TestCase):
-    fixtures = ["users.json", "statuses.json", "tasks.json"]
+    fixtures = ["users.json", "statuses.json", "labels.json", "tasks.json"]
     expected_tasks_count = 4
     status_filter_tasks_count = 2
     executor_filter_tasks_count = 2
@@ -18,7 +18,14 @@ class TasksTest(TestCase):
     delete_task_id = 5
     wrong_delete_task_id = 2
     testuser_username = "user4"
-    testuser_password = "123"
+    testuser_password = "123"  # NOSONAR
+
+    new_task_data = {
+        "name": "New task",
+        "description": "New description",
+        "status": 1,
+        "executor": 1,
+    }
 
     login_url = reverse("login")
     tasks_index_url = reverse("tasks_index")
@@ -39,6 +46,8 @@ class TasksTest(TestCase):
         "tasks_index", query={"status": 1, "executor": 1, "self_tasks": "on"}
     )
     delete_user_with_task_url = reverse("users_delete", kwargs={"pk": 4})
+    delete_status_with_task_url = reverse("statuses_delete", kwargs={"pk": 1})
+    delete_label_with_task_url = reverse("labels_delete", kwargs={"pk": 1})
 
     def setUp(self):
         user = get_user_model()
@@ -59,12 +68,7 @@ class TasksTest(TestCase):
     def test_tasks_create(self):
         response = self.client.post(
             self.tasks_create_url,
-            data={
-                "name": "New task",
-                "description": "New description",
-                "status": 1,
-                "executor": 1,
-            },
+            data=self.new_task_data,
             follow=True,
         )
         self.assertRedirects(response, self.tasks_index_url)
@@ -125,12 +129,7 @@ class TasksTest(TestCase):
     def test_tasks_filter_own_tasks(self):
         self.client.post(
             self.tasks_create_url,
-            data={
-                "name": "New task",
-                "description": "New description",
-                "status": 1,
-                "executor": 1,
-            },
+            data=self.new_task_data,
             follow=True,
         )
         response = self.client.get(self.tasks_filter_own_tasks_url)
@@ -141,18 +140,36 @@ class TasksTest(TestCase):
     def test_tasks_filter_full(self):
         self.client.post(
             self.tasks_create_url,
-            data={
-                "name": "New task",
-                "description": "New description",
-                "status": 1,
-                "executor": 1,
-            },
+            data=self.new_task_data,
             follow=True,
         )
         response = self.client.get(self.tasks_filter_full_url)
         self.assertEqual(response.status_code, 200)
         actual_tasks_count = len(response.context["tasks"])
         self.assertEqual(actual_tasks_count, self.full_filter_tasks_count)
+
+    def test_tasks_user_delete_restrict(self):
+        self.client.post(
+            self.tasks_create_url,
+            data=self.new_task_data,
+            follow=True,
+        )
+        response = self.client.post(
+            reverse("users_delete", kwargs={"pk": 4}), follow=True
+        )
+        self.assertContains(response, text_constants.USER_RESTRICT_DELETE)
+
+    def test_tasks__with_status_delete_restrict(self):
+        response = self.client.post(
+            self.delete_status_with_task_url, follow=True
+        )
+        self.assertContains(response, text_constants.STATUS_RESTRICT_DELETE)
+
+    def test_tasks__with_label_delete_restrict(self):
+        response = self.client.post(
+            self.delete_label_with_task_url, follow=True
+        )
+        self.assertContains(response, text_constants.LABEL_RESTRICT_DELETE)
 
 
 class UnAuthenticatedTasksTest(ParametrizedTestCase, TestCase):

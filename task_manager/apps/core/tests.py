@@ -10,7 +10,7 @@ class AutehicationTest(TestCase):
     fixtures = ["users.json"]
 
     testuser_username = "user4"
-    testuser_password = "123"
+    testuser_password = "123"  # NO SONAR
 
     main_url = reverse("main")
     login_url = reverse("login")
